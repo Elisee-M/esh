@@ -94,7 +94,7 @@ export default function Services() {
           <p className="text-gold text-xs tracking-[0.3em] uppercase mb-4 font-medium">
             What We Do
           </p>
-          <h2 className="text-white text-4xl md:text-5xl lg:text-6xl font-light tracking-tight leading-[1.05]">
+          <h2 className="text-white text-3xl sm:text-5xl lg:text-6xl font-light tracking-tight leading-[1.05] text-balance">
             PRODUCTION WITHOUT{' '}
             <span className="text-gold font-medium">LIMITS</span>
           </h2>

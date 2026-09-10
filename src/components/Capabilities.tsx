@@ -71,7 +71,7 @@ export default function Capabilities() {
           <p className="text-gold text-xs tracking-[0.3em] uppercase mb-4 font-medium">
             Equipment & Expertise
           </p>
-          <h2 className="text-white text-4xl md:text-5xl lg:text-6xl font-light tracking-tight">
+          <h2 className="text-white text-3xl sm:text-5xl lg:text-6xl font-light tracking-tight leading-[1.1] text-balance">
             THE PRODUCTION BEHIND{' '}
             <span className="text-gold font-medium">THE MOMENT</span>
           </h2>
@@ -98,7 +98,7 @@ export default function Capabilities() {
               </div>
 
               {/* Name */}
-              <h3 className="text-white/60 text-[11px] md:text-xs font-bold tracking-[0.2em] group-hover:text-gold transition-colors duration-300 text-center px-4">
+              <h3 className="text-white/60 text-[10px] md:text-xs font-bold tracking-[0.14em] leading-snug group-hover:text-gold transition-colors duration-300 text-center px-3">
                 {cap.name}
               </h3>
 
