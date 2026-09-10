@@ -1,32 +1,61 @@
-# React + TypeScript + Vite
+# ESH — Ebenezer Streaming House Ltd
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A premium, cinematic landing website for **ESH (Ebenezer Streaming House Ltd)** — a professional live-streaming, event production and media production company.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- React 19
+- TypeScript
+- Vite
+- Tailwind CSS v4
+- GSAP (animations + ScrollTrigger)
 
-## React Compiler
+## Getting Started
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm install
+npm run dev
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## Scripts
+
+| Command           | Description                      |
+| ----------------- | -------------------------------- |
+| `npm run dev`     | Start Vite dev server            |
+| `npm run build`   | Type-check + production build    |
+| `npm run preview` | Preview the production build     |
+| `npm run lint`    | Run Oxlint                       |
+
+## Project Structure
+
+```
+src/
+  assets/
+    images/          # esh_logo_no_bg.png (official ESH logo)
+    videos/          # video_bg.mp4 (hero background video)
+  components/
+    Navbar.tsx       # Transparent nav → dark on scroll + mobile menu
+    Hero.tsx         # Cinematic hero with background video
+    Services.tsx     # Production services grid
+    OurWork.tsx      # Editorial portfolio placeholders
+    Capabilities.tsx # Production capability grid
+    WhyESH.tsx       # Value propositions
+    About.tsx        # About ESH
+    CTA.tsx          # Cinematic call-to-action
+    Contact.tsx      # Quote request form
+    Footer.tsx       # Premium footer
+  App.tsx
+  main.tsx
+  index.css          # Tailwind v4 theme with ESH brand colors
+```
+
+## Brand Identity
+
+- **Gold** `#F2B323` — primary CTAs, highlights, accents, hover states
+- **Green** `#145A32` — secondary accents, supporting details
+- **Black** `#1C1A1D` — dark sections, overlays, nav after scroll
+- **White** `#FFFFFF` — primary typography, contrast
+
+## Media Placeholders
+
+No client project media has been provided yet, so the **Our Work** section uses elegant, media-ready placeholder components. Each project entry supports `title`, `event type`, `location`, `services`, and `image/video` — drop real assets into `OurWork.tsx` when available.
