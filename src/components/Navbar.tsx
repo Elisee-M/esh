@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
+import { gsap } from 'gsap'
 import eshLogo from '../assets/images/esh_logo_no_bg.png'
 
 const navLinks = [
@@ -13,6 +14,8 @@ const navLinks = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const mobileMenuRef = useRef<HTMLDivElement>(null)
+  const linksRef = useRef<HTMLAnchorElement[]>([])
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60)
@@ -26,7 +29,33 @@ export default function Navbar() {
     } else {
       document.body.style.overflow = ''
     }
-    return () => { document.body.style.overflow = '' }
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [mobileOpen])
+
+  useEffect(() => {
+    if (!mobileMenuRef.current) return
+
+    if (mobileOpen) {
+      gsap.fromTo(
+        mobileMenuRef.current,
+        { opacity: 0 },
+        { opacity: 1, duration: 0.45, ease: 'power2.out' }
+      )
+      gsap.fromTo(
+        linksRef.current,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          stagger: 0.08,
+          ease: 'power3.out',
+          delay: 0.1,
+        }
+      )
+    }
   }, [mobileOpen])
 
   return (
@@ -48,7 +77,9 @@ export default function Navbar() {
                 className="h-12 w-12 object-contain transition-transform duration-300 group-hover:scale-105"
               />
               <div className="hidden sm:block">
-                <span className="text-gold font-bold text-lg tracking-wider">ESH</span>
+                <span className="text-gold font-bold text-lg tracking-wider">
+                  ESH
+                </span>
               </div>
             </a>
 
@@ -80,6 +111,7 @@ export default function Navbar() {
               onClick={() => setMobileOpen(!mobileOpen)}
               className="lg:hidden relative w-10 h-10 flex items-center justify-center"
               aria-label="Toggle menu"
+              aria-expanded={mobileOpen}
             >
               <div className="w-6 flex flex-col gap-1.5">
                 <span
@@ -105,31 +137,50 @@ export default function Navbar() {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 z-40 bg-esh-black/95 backdrop-blur-lg transition-opacity duration-500 lg:hidden ${
+        ref={mobileMenuRef}
+        className={`fixed inset-0 z-40 bg-esh-black/95 backdrop-blur-lg lg:hidden ${
           mobileOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-        }`}
+        } transition-opacity duration-500`}
       >
-        <div className="flex flex-col items-center justify-center h-full gap-8">
+        {/* Accent line */}
+        <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-gold/50 to-transparent" />
+
+        {/* Brand top */}
+        <div className="absolute top-[90px] left-1/2 -translate-x-1/2 flex items-center gap-3">
+          <img src={eshLogo} alt="" className="h-10 w-10 object-contain opacity-60" />
+          <span className="text-gold/60 text-sm font-bold tracking-widest">
+            ESH
+          </span>
+        </div>
+
+        <div className="flex flex-col items-center justify-center h-full gap-7">
+          {/* Decorative numbers */}
+          <p className="text-white/20 text-[10px] tracking-[0.4em] uppercase mb-2 font-light">
+            Menu
+          </p>
+
           {navLinks.map((link, i) => (
             <a
               key={link.href}
+              ref={(el) => {
+                if (el) linksRef.current[i] = el
+              }}
               href={link.href}
               onClick={() => setMobileOpen(false)}
-              className="text-white text-2xl font-light tracking-[0.2em] hover:text-gold transition-colors duration-300"
-              style={{
-                transitionDelay: mobileOpen ? `${i * 80}ms` : '0ms',
-                transform: mobileOpen ? 'translateY(0)' : 'translateY(20px)',
-                opacity: mobileOpen ? 1 : 0,
-                transition: 'all 0.4s ease',
-              }}
+              className="group relative text-white text-2xl font-light tracking-[0.2em] hover:text-gold transition-colors duration-300"
             >
+              <span className="block text-white/30 text-[10px] tracking-widest mb-1 group-hover:text-gold/50 transition-colors duration-300 text-center">
+                0{i + 1}
+              </span>
               {link.label}
+              <span className="block mx-auto w-0 h-[1px] bg-gold group-hover:w-full transition-all duration-500 mt-1" />
             </a>
           ))}
+
           <a
             href="#contact"
             onClick={() => setMobileOpen(false)}
-            className="mt-4 bg-gold hover:bg-gold-light text-esh-black px-8 py-3 text-sm font-bold tracking-[0.15em] transition-all duration-300"
+            className="mt-6 bg-gold hover:bg-gold-light text-esh-black px-10 py-3.5 text-sm font-bold tracking-[0.15em] transition-all duration-300"
           >
             BOOK ESH
           </a>
