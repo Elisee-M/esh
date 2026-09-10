@@ -153,9 +153,9 @@ export default function Navbar() {
           </span>
         </div>
 
-        <div className="flex flex-col items-center justify-center h-full gap-7">
+        <div className="flex flex-col items-center justify-center h-full gap-5 overflow-y-auto py-28">
           {/* Decorative numbers */}
-          <p className="text-white/20 text-[10px] tracking-[0.4em] uppercase mb-2 font-light">
+          <p className="text-white/20 text-[10px] tracking-[0.4em] uppercase mb-1 font-light">
             Menu
           </p>
 
@@ -167,7 +167,7 @@ export default function Navbar() {
               }}
               href={link.href}
               onClick={() => setMobileOpen(false)}
-              className="group relative text-white text-2xl font-light tracking-[0.2em] hover:text-gold transition-colors duration-300"
+              className="group relative text-white text-xl sm:text-2xl font-light tracking-[0.16em] hover:text-gold transition-colors duration-300"
             >
               <span className="block text-white/30 text-[10px] tracking-widest mb-1 group-hover:text-gold/50 transition-colors duration-300 text-center">
                 0{i + 1}
@@ -180,7 +180,7 @@ export default function Navbar() {
           <a
             href="#contact"
             onClick={() => setMobileOpen(false)}
-            className="mt-6 bg-gold hover:bg-gold-light text-esh-black px-10 py-3.5 text-sm font-bold tracking-[0.15em] transition-all duration-300"
+            className="mt-5 bg-gold hover:bg-gold-light text-esh-black px-10 py-3.5 text-sm font-bold tracking-[0.15em] transition-all duration-300"
           >
             BOOK ESH
           </a>
