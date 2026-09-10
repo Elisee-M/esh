@@ -4,6 +4,7 @@ import Services from './components/Services'
 import OurWork from './components/OurWork'
 import Capabilities from './components/Capabilities'
 import WhyESH from './components/WhyESH'
+import About from './components/About'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <OurWork />
         <Capabilities />
         <WhyESH />
+        <About />
       </main>
     </div>
   )
