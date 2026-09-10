@@ -12,52 +12,55 @@ export default function Hero() {
   const contentRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (!contentRef.current || !sectionRef.current || !videoRef.current) return
+    const section = sectionRef.current
+    const video = videoRef.current
+    const content = contentRef.current
+    if (!content || !section || !video) return
 
     const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
 
     tl.fromTo(
-      contentRef.current.querySelector('.hero-logo'),
+      content.querySelector('.hero-logo'),
       { opacity: 0, scale: 0.8 },
       { opacity: 1, scale: 1, duration: 1, delay: 0.3 }
     )
     .fromTo(
-      contentRef.current.querySelector('.hero-title'),
+      content.querySelector('.hero-title'),
       { opacity: 0, y: 40 },
       { opacity: 1, y: 0, duration: 0.9 },
       '-=0.5'
     )
     .fromTo(
-      contentRef.current.querySelector('.hero-subtitle'),
+      content.querySelector('.hero-subtitle'),
       { opacity: 0, y: 30 },
       { opacity: 1, y: 0, duration: 0.8 },
       '-=0.5'
     )
     .fromTo(
-      contentRef.current.querySelector('.hero-headline'),
+      content.querySelector('.hero-headline'),
       { opacity: 0, y: 30 },
       { opacity: 1, y: 0, duration: 0.8 },
       '-=0.4'
     )
     .fromTo(
-      contentRef.current.querySelector('.hero-desc'),
+      content.querySelector('.hero-desc'),
       { opacity: 0, y: 20 },
       { opacity: 1, y: 0, duration: 0.7 },
       '-=0.3'
     )
     .fromTo(
-      contentRef.current.querySelectorAll('.hero-cta'),
+      content.querySelectorAll('.hero-cta'),
       { opacity: 0, y: 20 },
       { opacity: 1, y: 0, duration: 0.6, stagger: 0.15 },
       '-=0.3'
     )
 
     // Subtle parallax scroll on the video
-    const parallax = gsap.to(videoRef.current, {
+    const parallax = gsap.to(video, {
       yPercent: 12,
       ease: 'none',
       scrollTrigger: {
-        trigger: sectionRef.current,
+        trigger: section,
         start: 'top top',
         end: 'bottom top',
         scrub: true,
@@ -65,12 +68,12 @@ export default function Hero() {
     })
 
     // Subtle fade of hero content on scroll away
-    const fade = gsap.to(contentRef.current, {
+    const fade = gsap.to(content, {
       opacity: 0,
       yPercent: -8,
       ease: 'none',
       scrollTrigger: {
-        trigger: sectionRef.current,
+        trigger: section,
         start: 'top top',
         end: 'bottom 40%',
         scrub: true,
@@ -82,7 +85,7 @@ export default function Hero() {
       parallax.kill()
       fade.kill()
       ScrollTrigger.getAll().forEach((t) => {
-        if (t.trigger === sectionRef.current) t.kill()
+        if (t.trigger === section) t.kill()
       })
     }
   }, [])
@@ -100,7 +103,9 @@ export default function Hero() {
         muted
         loop
         playsInline
-        preload="auto"
+        preload="metadata"
+        disablePictureInPicture
+        controlsList="nodownload noplaybackrate"
         className="absolute inset-0 w-full h-[115%] object-cover -top-[7.5%]"
         aria-hidden="true"
       >
