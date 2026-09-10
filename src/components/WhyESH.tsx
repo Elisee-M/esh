@@ -77,7 +77,10 @@ export default function WhyESH() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="bg-esh-black-light py-32 px-6 lg:px-8">
+    <section
+      ref={sectionRef}
+      className="bg-esh-black-light border-t border-white/5 py-28 lg:py-36 px-6 lg:px-8"
+    >
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
           {/* Left: Heading */}

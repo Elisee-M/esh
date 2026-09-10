@@ -60,10 +60,14 @@ export default function Capabilities() {
   }, [])
 
   return (
-    <section ref={sectionRef} id="capabilities" className="bg-esh-black py-32 px-6 lg:px-8">
+    <section
+      ref={sectionRef}
+      id="capabilities"
+      className="bg-esh-black border-t border-white/5 py-28 lg:py-36 px-6 lg:px-8"
+    >
       <div className="max-w-7xl mx-auto">
         {/* Heading */}
-        <div ref={headingRef} className="mb-20 text-center">
+        <div ref={headingRef} className="mb-16 lg:mb-24 text-center">
           <p className="text-gold text-xs tracking-[0.3em] uppercase mb-4 font-medium">
             Equipment & Expertise
           </p>
