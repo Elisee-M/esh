@@ -11,6 +11,33 @@ export default function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null)
   const contentRef = useRef<HTMLDivElement>(null)
 
+  // Start the video from the beginning exactly once on a fresh page load.
+  // No loop, no timers — when it finishes, the final frame stays on screen.
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+
+    let cancelled = false
+    const playOnce = () => {
+      if (cancelled || video.ended) return
+      video.currentTime = 0
+      video.play().catch(() => {
+        // Autoplay blocked — the cinematic fallback background remains visible.
+      })
+    }
+
+    // Video keeps autoplay attribute, this guarantees a fresh single start
+    // even if the element is reconnected (e.g. browser autoplay policy).
+    const onLoaded = () => playOnce()
+    video.addEventListener('loadeddata', onLoaded)
+    playOnce()
+
+    return () => {
+      cancelled = true
+      video.removeEventListener('loadeddata', onLoaded)
+    }
+  }, [])
+
   useEffect(() => {
     const section = sectionRef.current
     const video = videoRef.current
@@ -96,14 +123,16 @@ export default function Hero() {
       id="home"
       className="relative w-full h-screen min-h-[600px] overflow-hidden flex items-center justify-center"
     >
-      {/* Background Video */}
+      {/* Background Video — plays once, stops on final frame, no loop */}
       <video
         ref={videoRef}
         autoPlay
         muted
-        loop
         playsInline
-        preload="metadata"
+        onEnded={() => {
+          // Leave the final frame visible; never restart automatically.
+        }}
+        preload="auto"
         disablePictureInPicture
         controlsList="nodownload noplaybackrate"
         className="absolute inset-0 w-full h-[115%] object-cover -top-[7.5%]"
