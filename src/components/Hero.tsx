@@ -1,14 +1,18 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import videoBg from '../assets/videos/video_bg.mp4'
 import eshLogo from '../assets/images/esh_logo_no_bg.png'
 
+gsap.registerPlugin(ScrollTrigger)
+
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null)
+  const videoRef = useRef<HTMLVideoElement>(null)
   const contentRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (!contentRef.current) return
+    if (!contentRef.current || !sectionRef.current || !videoRef.current) return
 
     const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
 
@@ -48,7 +52,39 @@ export default function Hero() {
       '-=0.3'
     )
 
-    return () => { tl.kill() }
+    // Subtle parallax scroll on the video
+    const parallax = gsap.to(videoRef.current, {
+      yPercent: 12,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: 'top top',
+        end: 'bottom top',
+        scrub: true,
+      },
+    })
+
+    // Subtle fade of hero content on scroll away
+    const fade = gsap.to(contentRef.current, {
+      opacity: 0,
+      yPercent: -8,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: 'top top',
+        end: 'bottom 40%',
+        scrub: true,
+      },
+    })
+
+    return () => {
+      tl.kill()
+      parallax.kill()
+      fade.kill()
+      ScrollTrigger.getAll().forEach((t) => {
+        if (t.trigger === sectionRef.current) t.kill()
+      })
+    }
   }, [])
 
   return (
@@ -59,12 +95,13 @@ export default function Hero() {
     >
       {/* Background Video */}
       <video
+        ref={videoRef}
         autoPlay
         muted
         loop
         playsInline
         preload="auto"
-        className="absolute inset-0 w-full h-full object-cover"
+        className="absolute inset-0 w-full h-[115%] object-cover -top-[7.5%]"
         aria-hidden="true"
       >
         <source src={videoBg} type="video/mp4" />
