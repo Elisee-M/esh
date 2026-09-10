@@ -76,7 +76,7 @@ export default function Hero() {
       '-=0.3'
     )
     .fromTo(
-      content.querySelectorAll('.hero-cta'),
+      content.querySelector('.hero-ctas .hero-cta'),
       { opacity: 0, y: 20 },
       { opacity: 1, y: 0, duration: 0.6, stagger: 0.15 },
       '-=0.3'
@@ -121,7 +121,7 @@ export default function Hero() {
     <section
       ref={sectionRef}
       id="home"
-      className="relative w-full h-screen min-h-[600px] overflow-hidden flex items-center justify-center"
+      className="relative w-full min-h-screen min-h-[100svh] overflow-hidden flex items-center justify-center py-28 md:py-32"
     >
       {/* Background Video — plays once, stops on final frame, no loop */}
       <video
@@ -142,53 +142,55 @@ export default function Hero() {
       </video>
 
       {/* Cinematic Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-esh-black/60 via-esh-black/40 to-esh-black/80" />
-      <div className="absolute inset-0 bg-esh-black/30" />
+      <div className="absolute inset-0 bg-gradient-to-b from-esh-black/70 via-esh-black/45 to-esh-black/85" />
+      {/* Radial vignette behind hero content for logo/headline readability */}
+      <div className="absolute inset-0 [background:radial-gradient(ellipse_50%_55%_at_50%_50%,rgba(28,26,29,0.55)_0%,transparent_65%)]" />
+      <div className="absolute inset-0 bg-esh-black/25" />
 
       {/* Content */}
-      <div ref={contentRef} className="relative z-10 text-center px-6 max-w-5xl mx-auto">
-        {/* Logo */}
-        <div className="hero-logo mb-8 opacity-0">
+      <div ref={contentRef} className="relative z-10 w-full max-w-5xl mx-auto px-6 text-center">
+        {/* LOGO */}
+        <div className="hero-logo mb-6 md:mb-8 opacity-0">
           <img
             src={eshLogo}
             alt="ESH Logo"
-            className="w-28 h-28 md:w-36 md:h-36 mx-auto object-contain drop-shadow-2xl"
+            className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 mx-auto object-contain drop-shadow-[0_8px_24px_rgba(28,26,29,0.9)]"
           />
         </div>
 
-        {/* Brand Name */}
-        <h1 className="hero-title opacity-0 text-gold text-5xl md:text-7xl lg:text-8xl font-bold tracking-[0.08em] mb-2">
+        {/* ESH / COMPANY NAME */}
+        <h1 className="hero-title opacity-0 text-gold text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-[0.06em] leading-none mb-3">
           ESH
         </h1>
 
-        <p className="hero-subtitle opacity-0 text-white/60 text-sm md:text-base tracking-[0.3em] uppercase mb-10">
+        <p className="hero-subtitle opacity-0 text-white/60 text-[11px] sm:text-sm md:text-base tracking-[0.3em] uppercase mb-8 md:mb-12">
           Ebenezer Streaming House Ltd
         </p>
 
-        {/* Headline */}
-        <h2 className="hero-headline opacity-0 text-white text-3xl md:text-5xl lg:text-6xl font-light leading-tight mb-6 tracking-tight">
+        {/* MAIN HEADLINE */}
+        <h2 className="hero-headline opacity-0 text-white text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-light leading-tight md:leading-tight mb-5 md:mb-7 tracking-tight">
           WE CAPTURE THE MOMENT.
           <br />
           <span className="text-gold font-medium">YOU EXPERIENCE IT.</span>
         </h2>
 
-        {/* Description */}
-        <p className="hero-desc opacity-0 text-white/60 text-base md:text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
+        {/* DESCRIPTION */}
+        <p className="hero-desc opacity-0 text-white/65 text-sm sm:text-base md:text-lg max-w-2xl mx-auto mb-9 md:mb-12 leading-relaxed">
           Professional live streaming, event production and media services
           built to bring your moments to the world.
         </p>
 
-        {/* CTAs */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        {/* CTA BUTTONS */}
+        <div className="hero-ctas flex flex-col sm:flex-row gap-4 justify-center">
           <a
             href="#contact"
-            className="hero-cta opacity-0 bg-gold hover:bg-gold-light text-esh-black px-10 py-4 text-sm font-bold tracking-[0.2em] transition-all duration-300 hover:shadow-xl hover:shadow-gold/20 hover:-translate-y-0.5"
+            className="hero-cta opacity-0 bg-gold hover:bg-gold-light text-esh-black px-8 sm:px-10 py-3.5 sm:py-4 text-sm font-bold tracking-[0.2em] transition-all duration-300 hover:shadow-xl hover:shadow-gold/20 hover:-translate-y-0.5"
           >
             BOOK A STREAM
           </a>
           <a
             href="#work"
-            className="hero-cta opacity-0 border border-white/30 hover:border-gold text-white hover:text-gold px-10 py-4 text-sm font-bold tracking-[0.2em] transition-all duration-300 hover:-translate-y-0.5"
+            className="hero-cta opacity-0 border border-white/30 hover:border-gold text-white hover:text-gold px-8 sm:px-10 py-3.5 sm:py-4 text-sm font-bold tracking-[0.2em] transition-all duration-300 hover:-translate-y-0.5"
           >
             EXPLORE OUR WORK
           </a>
