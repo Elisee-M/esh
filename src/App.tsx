@@ -3,6 +3,7 @@ import Hero from './components/Hero'
 import Services from './components/Services'
 import OurWork from './components/OurWork'
 import Capabilities from './components/Capabilities'
+import WhyESH from './components/WhyESH'
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Services />
         <OurWork />
         <Capabilities />
+        <WhyESH />
       </main>
     </div>
   )
