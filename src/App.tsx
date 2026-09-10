@@ -5,6 +5,7 @@ import OurWork from './components/OurWork'
 import Capabilities from './components/Capabilities'
 import WhyESH from './components/WhyESH'
 import About from './components/About'
+import CTA from './components/CTA'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Capabilities />
         <WhyESH />
         <About />
+        <CTA />
       </main>
     </div>
   )
