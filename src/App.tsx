@@ -6,6 +6,7 @@ import Capabilities from './components/Capabilities'
 import WhyESH from './components/WhyESH'
 import About from './components/About'
 import CTA from './components/CTA'
+import Contact from './components/Contact'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <WhyESH />
         <About />
         <CTA />
+        <Contact />
       </main>
     </div>
   )
