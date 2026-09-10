@@ -9,10 +9,12 @@ export default function CTA() {
   const contentRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (!contentRef.current) return
+    const section = sectionRef.current
+    const content = contentRef.current
+    if (!content || !section) return
 
     gsap.fromTo(
-      contentRef.current.children,
+      content.children,
       { opacity: 0, y: 40 },
       {
         opacity: 1,
@@ -21,8 +23,8 @@ export default function CTA() {
         stagger: 0.15,
         ease: 'power3.out',
         scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 85%',
+          trigger: section,
+          start: 'top 80%',
           once: true,
         },
       }
@@ -32,25 +34,29 @@ export default function CTA() {
   return (
     <section
       ref={sectionRef}
-      className="relative bg-esh-black py-36 px-6 lg:px-8 overflow-hidden"
+      className="relative bg-esh-black border-t border-white/5 py-32 lg:py-40 px-6 lg:px-8 overflow-hidden"
     >
       {/* Background accents */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-full bg-gradient-to-b from-transparent via-gold/20 to-transparent" />
-      <div className="absolute inset-0 opacity-10">
+      <div className="absolute inset-0 opacity-[0.08]">
         <div className="absolute top-1/4 left-0 right-0 h-[1px] bg-gold/30" />
         <div className="absolute bottom-1/4 left-0 right-0 h-[1px] bg-gold/30" />
       </div>
 
       {/* Cinematic glow */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-green/20 blur-[120px] pointer-events-none" />
-      <div className="absolute top-0 right-1/4 w-[200px] h-[200px] bg-gold/10 blur-[100px] pointer-events-none" />
+      <div className="absolute top-16 right-1/4 w-[200px] h-[200px] bg-gold/10 blur-[100px] pointer-events-none" />
 
-      <div ref={contentRef} className="relative max-w-4xl mx-auto text-center">
+      {/* Content */}
+      <div
+        ref={contentRef}
+        className="relative max-w-4xl mx-auto text-center flex flex-col items-center"
+      >
         <p className="text-gold text-xs tracking-[0.3em] uppercase mb-6 font-medium">
           Let's Work Together
         </p>
 
-        <h2 className="text-white text-4xl md:text-6xl lg:text-7xl font-light tracking-tight leading-tight mb-8">
+        <h2 className="text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light tracking-tight leading-[1.05] mb-8">
           YOUR EVENT DESERVES
           <br />
           <span className="text-gold font-medium">TO BE SEEN.</span>
