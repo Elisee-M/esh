@@ -43,10 +43,12 @@ export default function Services() {
   const gridRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (!headingRef.current || !gridRef.current) return
+    const heading = headingRef.current
+    const grid = gridRef.current
+    if (!heading || !grid) return
 
     gsap.fromTo(
-      headingRef.current.children,
+      heading.children,
       { opacity: 0, y: 40 },
       {
         opacity: 1,
@@ -55,7 +57,7 @@ export default function Services() {
         stagger: 0.15,
         ease: 'power3.out',
         scrollTrigger: {
-          trigger: headingRef.current,
+          trigger: heading,
           start: 'top 85%',
           once: true,
         },
@@ -63,7 +65,7 @@ export default function Services() {
     )
 
     gsap.fromTo(
-      gridRef.current.children,
+      grid.children,
       { opacity: 0, y: 50 },
       {
         opacity: 1,
@@ -72,7 +74,7 @@ export default function Services() {
         stagger: 0.1,
         ease: 'power3.out',
         scrollTrigger: {
-          trigger: gridRef.current,
+          trigger: grid,
           start: 'top 85%',
           once: true,
         },
@@ -81,39 +83,53 @@ export default function Services() {
   }, [])
 
   return (
-    <section ref={sectionRef} id="services" className="bg-esh-black py-32 px-6 lg:px-8">
+    <section
+      ref={sectionRef}
+      id="services"
+      className="bg-esh-black border-t border-white/5 py-28 lg:py-36 px-6 lg:px-8"
+    >
       <div className="max-w-7xl mx-auto">
         {/* Heading */}
-        <div ref={headingRef} className="mb-20">
+        <div ref={headingRef} className="mb-16 lg:mb-24">
           <p className="text-gold text-xs tracking-[0.3em] uppercase mb-4 font-medium">
             What We Do
           </p>
-          <h2 className="text-white text-4xl md:text-5xl lg:text-6xl font-light tracking-tight">
+          <h2 className="text-white text-4xl md:text-5xl lg:text-6xl font-light tracking-tight leading-[1.05]">
             PRODUCTION WITHOUT{' '}
             <span className="text-gold font-medium">LIMITS</span>
           </h2>
           <div className="w-16 h-[1px] bg-gold mt-8" />
         </div>
 
-        {/* Services Grid */}
+        {/* Services Grid — 3 cols desktop / 2 tablet / 1 mobile */}
         <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5">
-          {services.map((service) => (
+          {services.map((service, i) => (
             <div
               key={service.title}
-              className="group bg-esh-black p-8 lg:p-10 hover:bg-esh-black-light transition-colors duration-500 relative overflow-hidden cursor-default"
+              className="group relative bg-esh-black p-9 lg:p-11 hover:bg-esh-black-light transition-colors duration-500 overflow-hidden cursor-default flex flex-col min-h-[220px]"
             >
               {/* Hover accent line */}
               <div className="absolute top-0 left-0 w-0 h-[2px] bg-gold transition-all duration-500 group-hover:w-full" />
 
-              <h3 className="text-white text-sm font-bold tracking-[0.2em] mb-4 group-hover:text-gold transition-colors duration-300">
+              {/* Index watermark */}
+              <span className="absolute top-6 right-8 text-white/5 text-5xl font-bold group-hover:text-gold/10 transition-colors duration-500">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+
+              <h3 className="text-white text-sm font-bold tracking-[0.2em] mb-4 group-hover:text-gold transition-colors duration-300 pr-10">
                 {service.title}
               </h3>
               <p className="text-white/50 text-sm leading-relaxed group-hover:text-white/70 transition-colors duration-300">
                 {service.description}
               </p>
 
+              {/* Bottom gold rule */}
+              <div className="mt-auto pt-8">
+                <div className="w-8 h-[1px] bg-gold/0 group-hover:bg-gold/40 transition-colors duration-500" />
+              </div>
+
               {/* Corner accent */}
-              <div className="absolute bottom-0 right-0 w-8 h-8 border-r border-b border-gold/0 group-hover:border-gold/30 transition-all duration-500" />
+              <div className="absolute bottom-6 right-6 w-6 h-6 border-r border-b border-gold/0 group-hover:border-gold/30 transition-all duration-500" />
             </div>
           ))}
         </div>
