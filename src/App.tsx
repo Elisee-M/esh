@@ -7,6 +7,7 @@ import WhyESH from './components/WhyESH'
 import About from './components/About'
 import CTA from './components/CTA'
 import Contact from './components/Contact'
+import Footer from './components/Footer'
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <CTA />
         <Contact />
       </main>
+      <Footer />
     </div>
   )
 }
