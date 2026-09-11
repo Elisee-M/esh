@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import eshLogo from '../assets/images/esh_logo_no_bg.png'
@@ -121,6 +122,14 @@ export default function About() {
                   </p>
                 </div>
               </div>
+
+              <Link
+                to="/about"
+                className="inline-flex items-center gap-3 text-white/60 hover:text-gold text-xs font-bold tracking-[0.2em] uppercase transition-colors duration-300 group mt-8"
+              >
+                Learn More About Us
+                <span className="inline-block w-8 h-[1px] bg-gold group-hover:w-12 transition-all duration-300" />
+              </Link>
             </div>
           </div>
         </div>
