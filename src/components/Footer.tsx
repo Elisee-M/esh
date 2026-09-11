@@ -1,12 +1,13 @@
+import { Link } from 'react-router-dom'
 import eshLogo from '../assets/images/esh_logo_no_bg.png'
 
 const footerNav = [
-  { label: 'HOME', href: '#home' },
-  { label: 'SERVICES', href: '#services' },
-  { label: 'OUR WORK', href: '#work' },
-  { label: 'CAPABILITIES', href: '#capabilities' },
-  { label: 'ABOUT', href: '#about' },
-  { label: 'CONTACT', href: '#contact' },
+  { label: 'HOME', href: '/' },
+  { label: 'SERVICES', href: '/services' },
+  { label: 'OUR WORK', href: '/#work' },
+  { label: 'CAPABILITIES', href: '/#capabilities' },
+  { label: 'ABOUT', href: '/about' },
+  { label: 'CONTACT', href: '/#contact' },
 ]
 
 const socialLinks = [
@@ -53,12 +54,12 @@ export default function Footer() {
             <ul className="space-y-3">
               {footerNav.map((link) => (
                 <li key={link.href}>
-                  <a
-                    href={link.href}
+                  <Link
+                    to={link.href}
                     className="text-white/40 hover:text-gold text-sm tracking-wider transition-colors duration-300"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
