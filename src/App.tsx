@@ -1,30 +1,21 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import Services from './components/Services'
-import OurWork from './components/OurWork'
-import Capabilities from './components/Capabilities'
-import WhyESH from './components/WhyESH'
-import About from './components/About'
-import CTA from './components/CTA'
-import Contact from './components/Contact'
 import Footer from './components/Footer'
+import LandingPage from './pages/LandingPage'
 
 function App() {
   return (
-    <div className="bg-esh-black min-h-screen">
-      <Navbar />
-      <main>
-        <Hero />
-        <Services />
-        <OurWork />
-        <Capabilities />
-        <WhyESH />
-        <About />
-        <CTA />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <div className="bg-esh-black min-h-screen">
+        <Navbar />
+        <main>
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </BrowserRouter>
   )
 }
 
