@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -149,13 +150,13 @@ export default function ServicesPage() {
 
                 {/* Learn More link */}
                 <div className="mt-auto pt-8">
-                  <a
-                    href="#contact"
+                  <Link
+                    to="/#contact"
                     className="inline-flex items-center gap-2 text-gold text-xs font-bold tracking-[0.2em] uppercase opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300"
                   >
                     Learn More
                     <span className="inline-block w-6 h-[1px] bg-gold" />
-                  </a>
+                  </Link>
                 </div>
 
                 {/* Bottom gold rule */}
