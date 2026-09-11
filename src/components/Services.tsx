@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -99,6 +100,13 @@ export default function Services() {
             <span className="text-gold font-medium">LIMITS</span>
           </h2>
           <div className="w-16 h-[1px] bg-gold mt-8" />
+          <Link
+            to="/services"
+            className="inline-flex items-center gap-3 mt-8 text-white/60 hover:text-gold text-xs font-bold tracking-[0.2em] uppercase transition-colors duration-300 group"
+          >
+            View All Services
+            <span className="inline-block w-8 h-[1px] bg-gold group-hover:w-12 transition-all duration-300" />
+          </Link>
         </div>
 
         {/* Services Grid — 3 cols desktop / 2 tablet / 1 mobile */}
