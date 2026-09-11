@@ -1,14 +1,15 @@
 import { useState, useEffect, useRef } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import { gsap } from 'gsap'
 import eshLogo from '../assets/images/esh_logo_no_bg.png'
 
 const navLinks = [
-  { label: 'HOME', href: '#home' },
-  { label: 'SERVICES', href: '#services' },
-  { label: 'OUR WORK', href: '#work' },
-  { label: 'CAPABILITIES', href: '#capabilities' },
-  { label: 'ABOUT', href: '#about' },
-  { label: 'CONTACT', href: '#contact' },
+  { label: 'HOME', to: '/' },
+  { label: 'SERVICES', to: '/services' },
+  { label: 'OUR WORK', to: '/#work' },
+  { label: 'CAPABILITIES', to: '/#capabilities' },
+  { label: 'ABOUT', to: '/about' },
+  { label: 'CONTACT', to: '/#contact' },
 ]
 
 export default function Navbar() {
@@ -16,6 +17,7 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const mobileMenuRef = useRef<HTMLDivElement>(null)
   const linksRef = useRef<HTMLAnchorElement[]>([])
+  const location = useLocation()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60)
@@ -58,6 +60,17 @@ export default function Navbar() {
     }
   }, [mobileOpen])
 
+  useEffect(() => {
+    if (location.hash && location.pathname === '/') {
+      const target = document.querySelector(location.hash)
+      if (target) {
+        setTimeout(() => {
+          target.scrollIntoView({ behavior: 'smooth' })
+        }, 100)
+      }
+    }
+  }, [location])
+
   return (
     <>
       <nav
@@ -70,7 +83,7 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <a href="#home" className="flex items-center gap-3 group">
+            <Link to="/" className="flex items-center gap-3 group">
               <img
                 src={eshLogo}
                 alt="ESH Logo"
@@ -81,29 +94,29 @@ export default function Navbar() {
                   ESH
                 </span>
               </div>
-            </a>
+            </Link>
 
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center gap-8">
               {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
+                <Link
+                  key={link.to}
+                  to={link.to}
                   className="text-white/70 hover:text-gold text-xs font-medium tracking-[0.15em] transition-colors duration-300 relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-gold after:transition-all after:duration-300 hover:after:w-full"
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
             </div>
 
             {/* CTA Button */}
             <div className="hidden lg:flex items-center">
-              <a
-                href="#contact"
+              <Link
+                to="/#contact"
                 className="bg-gold hover:bg-gold-light text-esh-black px-6 py-2.5 text-xs font-bold tracking-[0.15em] transition-all duration-300 hover:shadow-lg hover:shadow-gold/20"
               >
                 BOOK ESH
-              </a>
+              </Link>
             </div>
 
             {/* Mobile Menu Toggle */}
@@ -160,12 +173,12 @@ export default function Navbar() {
           </p>
 
           {navLinks.map((link, i) => (
-            <a
-              key={link.href}
+            <Link
+              key={link.to}
+              to={link.to}
               ref={(el) => {
                 if (el) linksRef.current[i] = el
               }}
-              href={link.href}
               onClick={() => setMobileOpen(false)}
               className="group relative text-white text-xl sm:text-2xl font-light tracking-[0.16em] hover:text-gold transition-colors duration-300"
             >
@@ -174,16 +187,16 @@ export default function Navbar() {
               </span>
               {link.label}
               <span className="block mx-auto w-0 h-[1px] bg-gold group-hover:w-full transition-all duration-500 mt-1" />
-            </a>
+            </Link>
           ))}
 
-          <a
-            href="#contact"
+          <Link
+            to="/#contact"
             onClick={() => setMobileOpen(false)}
             className="mt-5 bg-gold hover:bg-gold-light text-esh-black px-10 py-3.5 text-sm font-bold tracking-[0.15em] transition-all duration-300"
           >
             BOOK ESH
-          </a>
+          </Link>
         </div>
       </div>
     </>
