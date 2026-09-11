@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
+import ScrollToTop from './components/ScrollToTop'
 import LandingPage from './pages/LandingPage'
 import AboutPage from './pages/AboutPage'
 import ServicesPage from './pages/ServicesPage'
@@ -8,6 +9,7 @@ import ServicesPage from './pages/ServicesPage'
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <div className="bg-esh-black min-h-screen">
         <Navbar />
         <main>
