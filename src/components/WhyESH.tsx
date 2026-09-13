@@ -82,47 +82,45 @@ export default function WhyESH() {
       className="bg-esh-black-light border-t border-white/5 py-28 lg:py-36 px-6 lg:px-8"
     >
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
-          {/* Left: Heading */}
-          <div ref={headingRef}>
-            <p className="text-gold text-xs tracking-[0.3em] uppercase mb-4 font-medium">
-              The ESH Difference
-            </p>
-            <h2 className="text-white text-4xl md:text-5xl lg:text-6xl font-light tracking-tight">
-              WHY <span className="text-gold font-medium">ESH</span>
-            </h2>
-            <div className="w-16 h-[1px] bg-gold mt-8 mb-8" />
-            <p className="text-white/50 text-base leading-relaxed max-w-md">
-              When your event matters, you need a production partner who understands both
-              the technology and the story. ESH delivers both.
-            </p>
-          </div>
+        {/* Heading */}
+        <div ref={headingRef} className="max-w-2xl mx-auto mb-16 lg:mb-20 text-center">
+          <p className="text-gold text-xs tracking-[0.3em] uppercase mb-4 font-medium">
+            The ESH Difference
+          </p>
+          <h2 className="text-white text-4xl md:text-5xl lg:text-6xl font-light tracking-tight">
+            WHY <span className="text-gold font-medium">ESH</span>
+          </h2>
+          <div className="w-16 h-[1px] bg-gold mt-8 mb-8 mx-auto" />
+          <p className="text-white/50 text-base leading-relaxed max-w-md mx-auto">
+            When your event matters, you need a production partner who understands both
+            the technology and the story. ESH delivers both.
+          </p>
+        </div>
 
-          {/* Right: Reasons List */}
-          <div ref={listRef} className="space-y-0">
-            {reasons.map((reason, i) => (
-              <div
-                key={reason.title}
-                className="why-item group border-t border-white/10 py-8 hover:border-gold/30 transition-colors duration-500 cursor-default"
-              >
-                <div className="flex items-start gap-6">
-                  <span className="text-gold/30 text-sm font-bold tracking-wider group-hover:text-gold transition-colors duration-300 mt-1 shrink-0">
-                    0{i + 1}
-                  </span>
-                  <div>
-                    <h3 className="text-white text-sm font-bold tracking-[0.15em] mb-2 group-hover:text-gold transition-colors duration-300">
-                      {reason.title}
-                    </h3>
-                    <p className="text-white/40 text-sm leading-relaxed group-hover:text-white/60 transition-colors duration-300">
-                      {reason.description}
-                    </p>
-                  </div>
+        {/* Reasons List */}
+        <div ref={listRef} className="max-w-2xl mx-auto space-y-0">
+          {reasons.map((reason, i) => (
+            <div
+              key={reason.title}
+              className="why-item group border-t border-white/10 py-8 hover:border-gold/30 transition-colors duration-500 cursor-default"
+            >
+              <div className="flex items-start gap-6 justify-center">
+                <span className="text-gold/30 text-sm font-bold tracking-wider group-hover:text-gold transition-colors duration-300 mt-1 shrink-0">
+                  0{i + 1}
+                </span>
+                <div>
+                  <h3 className="text-white text-sm font-bold tracking-[0.15em] mb-2 group-hover:text-gold transition-colors duration-300">
+                    {reason.title}
+                  </h3>
+                  <p className="text-white/40 text-sm leading-relaxed group-hover:text-white/60 transition-colors duration-300">
+                    {reason.description}
+                  </p>
                 </div>
               </div>
-            ))}
-            {/* Bottom border */}
-            <div className="border-t border-white/10" />
-          </div>
+            </div>
+          ))}
+          {/* Bottom border */}
+          <div className="border-t border-white/10" />
         </div>
       </div>
     </section>
