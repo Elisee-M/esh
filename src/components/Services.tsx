@@ -91,21 +91,25 @@ export default function Services() {
     >
       <div className="max-w-7xl mx-auto">
         {/* Heading */}
-        <div ref={headingRef} className="mb-16 lg:mb-24">
-          <p className="text-gold text-xs tracking-[0.3em] uppercase mb-4 font-medium">
+        <div ref={headingRef} className="max-w-2xl mb-14 lg:mb-20">
+          <p className="text-gold text-xs tracking-[0.3em] uppercase mb-5 font-medium">
             What We Do
           </p>
           <h2 className="text-white text-3xl sm:text-5xl lg:text-6xl font-light tracking-tight leading-[1.05] text-balance">
             PRODUCTION WITHOUT{' '}
             <span className="text-gold font-medium">LIMITS</span>
           </h2>
-          <div className="w-16 h-[1px] bg-gold mt-8" />
+          <div className="w-16 h-[1px] bg-gold mt-7 mb-7" />
+          <p className="text-white/50 text-base leading-relaxed">
+            From live streaming to post-production, we manage every stage of your
+            media with broadcast-grade equipment and a professional crew.
+          </p>
           <Link
             to="/services"
             className="inline-flex items-center gap-3 mt-8 text-white/60 hover:text-gold text-xs font-bold tracking-[0.2em] uppercase transition-colors duration-300 group"
           >
             View All Services
-            <span className="inline-block w-8 h-[1px] bg-gold group-hover:w-12 transition-all duration-300" />
+            <span className="inline-block w-8 h-[2px] bg-gold group-hover:w-12 transition-all duration-300" />
           </Link>
         </div>
 
