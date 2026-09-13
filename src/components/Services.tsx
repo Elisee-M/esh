@@ -14,27 +14,27 @@ const services = [
   {
     title: 'EVENT PRODUCTION',
     description:
-      'Technical production and live event support.',
+      'Full technical production and on-site support that keeps your event running flawlessly.',
   },
   {
     title: 'MULTI-CAMERA PRODUCTION',
     description:
-      'Professional multi-camera coverage and switching.',
+      'Dynamic multi-angle coverage and seamless switching for broadcast-quality visuals.',
   },
   {
     title: 'VIDEO PRODUCTION',
     description:
-      'Event recording, promotional content and cinematic video.',
+      'Event recording, promotional content, and cinematic video crafted to tell your story.',
   },
   {
-    title: 'AUDIO & VISUAL PRODUCTION',
+    title: 'AUDIO & VISUAL',
     description:
-      'Professional sound, lighting and visual production.',
+      'Professional sound, lighting, and visual design that elevate every experience.',
   },
   {
     title: 'POST-PRODUCTION',
     description:
-      'Editing, highlights, recordings and media delivery.',
+      'Expert editing, highlight packages, and polished media delivery for any platform.',
   },
 ]
 
