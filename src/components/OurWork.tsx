@@ -95,20 +95,18 @@ export default function OurWork() {
     >
       <div className="max-w-7xl mx-auto">
         {/* Heading */}
-        <div ref={headingRef} className="mb-16 lg:mb-24">
+        <div ref={headingRef} className="mb-16 lg:mb-24 text-center">
           <p className="text-gold text-xs tracking-[0.3em] uppercase mb-4 font-medium">
             Portfolio
           </p>
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-            <h2 className="text-white text-4xl md:text-5xl lg:text-6xl font-light tracking-tight leading-[1.05]">
-              OUR <span className="text-gold font-medium">WORK</span>
-            </h2>
-            <p className="text-white/40 text-sm lg:text-base max-w-md leading-relaxed">
-              Selected productions and experience across live streaming and event
-              media. New work is added as each event goes live.
-            </p>
-          </div>
-          <div className="w-16 h-[1px] bg-gold mt-8" />
+          <h2 className="text-white text-4xl md:text-5xl lg:text-6xl font-light tracking-tight leading-[1.05]">
+            OUR <span className="text-gold font-medium">WORK</span>
+          </h2>
+          <p className="text-white/40 text-sm lg:text-base max-w-md mx-auto mt-6 leading-relaxed">
+            Selected productions and experience across live streaming and event
+            media. New work is added as each event goes live.
+          </p>
+          <div className="w-16 h-[1px] bg-gold mt-8 mx-auto" />
         </div>
 
         {/* Projects Grid — 2 cols desktop / 1 col tablet & mobile */}
