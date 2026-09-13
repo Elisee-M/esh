@@ -126,30 +126,27 @@ export default function ServicesPage() {
         <div className="max-w-7xl mx-auto">
           <div
             ref={gridRef}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6"
           >
             {services.map((service, i) => (
               <div
                 key={service.title}
-                className="group relative bg-esh-black p-9 lg:p-11 hover:bg-esh-black-light transition-colors duration-500 overflow-hidden cursor-default flex flex-col min-h-[260px]"
+                className="group relative bg-esh-black-light/40 border border-white/10 p-8 lg:p-10 hover:bg-esh-black-light hover:border-gold/40 hover:-translate-y-1 transition-all duration-500 overflow-hidden cursor-default flex flex-col min-h-[260px]"
               >
-                {/* Hover accent line */}
-                <div className="absolute top-0 left-0 w-0 h-[2px] bg-gold transition-all duration-500 group-hover:w-full" />
-
-                {/* Index watermark */}
-                <span className="absolute top-6 right-8 text-white/5 text-5xl font-bold group-hover:text-gold/10 transition-colors duration-500">
-                  {String(i + 1).padStart(2, '0')}
+                {/* Index */}
+                <span className="text-gold/40 text-xs font-bold tracking-[0.25em] mb-8 group-hover:text-gold transition-colors duration-300">
+                  0{i + 1}
                 </span>
 
-                <h3 className="text-white text-sm font-bold tracking-[0.2em] mb-4 group-hover:text-gold transition-colors duration-300 pr-10">
+                <h3 className="text-white text-base md:text-lg font-bold tracking-[0.12em] mb-4 group-hover:text-gold transition-colors duration-300">
                   {service.title}
                 </h3>
-                <p className="text-white/50 text-sm leading-relaxed group-hover:text-white/70 transition-colors duration-300">
+                <p className="text-white/55 text-sm leading-relaxed group-hover:text-white/70 transition-colors duration-300 mb-6">
                   {service.description}
                 </p>
 
                 {/* Learn More link */}
-                <div className="mt-auto pt-8">
+                <div className="mt-auto">
                   <Link
                     to="/#contact"
                     className="inline-flex items-center gap-2 text-gold text-xs font-bold tracking-[0.2em] uppercase opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300"
@@ -159,11 +156,8 @@ export default function ServicesPage() {
                   </Link>
                 </div>
 
-                {/* Bottom gold rule */}
-                <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-gold/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                {/* Corner accent */}
-                <div className="absolute bottom-6 right-6 w-6 h-6 border-r border-b border-gold/0 group-hover:border-gold/30 transition-all duration-500" />
+                {/* Bottom accent */}
+                <div className="absolute bottom-0 left-0 w-full h-[2px] bg-gold/0 group-hover:bg-gold transition-colors duration-500 scale-x-100" />
               </div>
             ))}
           </div>
