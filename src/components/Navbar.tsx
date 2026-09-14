@@ -76,33 +76,36 @@ export default function Navbar() {
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? 'bg-esh-black/90 backdrop-blur-md border-b border-white/5 shadow-lg shadow-black/20'
-            : 'bg-transparent'
+            ? 'bg-esh-black/85 backdrop-blur-xl border-b border-white/[0.07]'
+            : 'bg-gradient-to-b from-esh-black/60 to-transparent backdrop-blur-sm border-b border-transparent'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20">
+        <div className="esh-container">
+          <div className={`flex items-center justify-between transition-all duration-500 ${scrolled ? 'h-16' : 'h-20'}`}>
             {/* Logo */}
             <Link to="/" className="flex items-center gap-3 group">
               <img
                 src={eshLogo}
                 alt="ESH Logo"
-                className="h-12 w-12 object-contain transition-transform duration-300 group-hover:scale-105"
+                className="h-11 w-11 object-contain transition-transform duration-300 group-hover:scale-105"
               />
-              <div className="hidden sm:block">
-                <span className="text-gold font-bold text-lg tracking-wider">
+              <div className="flex flex-col leading-none">
+                <span className="text-gold font-bold text-base tracking-[0.2em]">
                   ESH
+                </span>
+                <span className="text-white/30 text-[9px] tracking-[0.22em] uppercase mt-1">
+                  Ebenezer Streaming House
                 </span>
               </div>
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center gap-8">
+            <div className="hidden lg:flex items-center gap-7">
               {navLinks.map((link) => (
                 <Link
                   key={link.to}
                   to={link.to}
-                  className="text-white/70 hover:text-gold text-xs font-medium tracking-[0.15em] transition-colors duration-300 relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-gold after:transition-all after:duration-300 hover:after:w-full"
+                  className="text-white/60 hover:text-white text-[11px] font-medium tracking-[0.16em] transition-colors duration-300 relative after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-px after:bg-gold after:transition-all after:duration-300 hover:after:w-full hover:text-gold"
                 >
                   {link.label}
                 </Link>
@@ -113,9 +116,18 @@ export default function Navbar() {
             <div className="hidden lg:flex items-center">
               <Link
                 to="/#contact"
-                className="bg-gold hover:bg-gold-light text-esh-black px-6 py-2.5 text-xs font-bold tracking-[0.15em] transition-all duration-300 hover:shadow-lg hover:shadow-gold/20"
+                className="inline-flex items-center gap-2 bg-gold text-esh-black pl-5 pr-4 h-10 text-[11px] font-bold tracking-[0.16em] transition-all duration-300 hover:bg-gold-light hover:shadow-lg hover:shadow-gold/20 group"
               >
                 BOOK ESH
+                <svg
+                  className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2.5}
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
               </Link>
             </div>
 
@@ -159,8 +171,8 @@ export default function Navbar() {
         <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-gold/50 to-transparent" />
 
         {/* Brand top */}
-        <div className="absolute top-[90px] left-1/2 -translate-x-1/2 flex items-center gap-3">
-          <img src={eshLogo} alt="" className="h-10 w-10 object-contain opacity-60" />
+        <div className="absolute top-[84px] left-1/2 -translate-x-1/2 flex items-center gap-3">
+          <img src={eshLogo} alt="" className="h-9 w-9 object-contain opacity-60" />
           <span className="text-gold/60 text-sm font-bold tracking-widest">
             ESH
           </span>
