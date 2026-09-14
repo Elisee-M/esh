@@ -2,7 +2,6 @@ import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import videoBg from '../assets/videos/video_bg.mp4'
-import eshLogo from '../assets/images/esh_logo_no_bg.png'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -47,26 +46,26 @@ export default function Hero() {
     const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
 
     tl.fromTo(
-      content.querySelector('.hero-logo'),
-      { opacity: 0, scale: 0.8 },
-      { opacity: 1, scale: 1, duration: 1, delay: 0.3 }
+      content.querySelector('.hero-eyebrow'),
+      { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, duration: 0.8, delay: 0.2 }
     )
     .fromTo(
       content.querySelector('.hero-title'),
-      { opacity: 0, y: 40 },
-      { opacity: 1, y: 0, duration: 0.9 },
+      { opacity: 0, y: 50 },
+      { opacity: 1, y: 0, duration: 1 },
       '-=0.5'
     )
     .fromTo(
       content.querySelector('.hero-subtitle'),
       { opacity: 0, y: 30 },
       { opacity: 1, y: 0, duration: 0.8 },
-      '-=0.5'
+      '-=0.55'
     )
     .fromTo(
       content.querySelector('.hero-headline'),
-      { opacity: 0, y: 30 },
-      { opacity: 1, y: 0, duration: 0.8 },
+      { opacity: 0, y: 40 },
+      { opacity: 1, y: 0, duration: 0.9 },
       '-=0.4'
     )
     .fromTo(
@@ -142,57 +141,75 @@ export default function Hero() {
       </video>
 
       {/* Cinematic Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-esh-black/70 via-esh-black/45 to-esh-black/85" />
+      <div className="absolute inset-0 bg-gradient-to-b from-esh-black/80 via-esh-black/35 to-esh-black/90" />
       {/* Radial vignette behind hero content for logo/headline readability */}
-      <div className="absolute inset-0 [background:radial-gradient(ellipse_50%_55%_at_50%_50%,rgba(28,26,29,0.55)_0%,transparent_65%)]" />
-      <div className="absolute inset-0 bg-esh-black/25" />
+      <div className="absolute inset-0 [background:radial-gradient(ellipse_55%_55%_at_50%_50%,rgba(28,26,29,0.6)_0%,transparent_68%)]" />
+      <div className="absolute inset-0 bg-esh-black/10" />
+      {/* Film grain */}
+      <div className="absolute inset-0 esh-grain" />
 
       {/* Content */}
-      <div ref={contentRef} className="relative z-10 w-full max-w-5xl mx-auto px-6 text-center">
-        {/* LOGO */}
-        <div className="hero-logo mb-6 md:mb-8 opacity-0">
-          <img
-            src={eshLogo}
-            alt="ESH Logo"
-            className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 mx-auto object-contain drop-shadow-[0_8px_24px_rgba(28,26,29,0.9)]"
-          />
+      <div ref={contentRef} className="relative z-10 w-full esh-container flex flex-col items-center text-center">
+        {/* EYEBROW */}
+        <div className="hero-eyebrow esh-eyebrow opacity-0 mb-8 flex items-center gap-3">
+          <span className="w-10 h-px bg-gold/60" />
+          <span className="text-gold/90">Event Production — Live — Visuals</span>
+          <span className="w-10 h-px bg-gold/60" />
         </div>
 
         {/* ESH / COMPANY NAME */}
-        <h1 className="hero-title opacity-0 text-gold text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-[0.06em] leading-none mb-3">
+        <h1 className="hero-title opacity-0 text-gold text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-[0.12em] leading-none mb-3">
           ESH
         </h1>
 
-        <p className="hero-subtitle opacity-0 text-white/60 text-[11px] sm:text-sm md:text-base tracking-[0.3em] uppercase mb-8 md:mb-12">
+        <p className="hero-subtitle opacity-0 text-white/50 text-[10px] sm:text-xs md:text-sm tracking-[0.34em] uppercase mb-10 md:mb-14">
           Ebenezer Streaming House Ltd
         </p>
 
         {/* MAIN HEADLINE */}
-        <h2 className="hero-headline opacity-0 text-white text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-light leading-tight md:leading-tight mb-5 md:mb-7 tracking-tight">
-          WE CAPTURE THE MOMENT.
+        <h2 className="hero-headline esh-heading-xl opacity-0 text-white mb-6 md:mb-8 max-w-5xl">
+          WE BRING YOUR
           <br />
-          <span className="text-gold font-medium">YOU EXPERIENCE IT.</span>
+          <span className="text-gold font-normal">EVENT TO LIFE.</span>
         </h2>
 
         {/* DESCRIPTION */}
-        <p className="hero-desc opacity-0 text-white/65 text-sm sm:text-base md:text-lg max-w-2xl mx-auto mb-9 md:mb-12 leading-relaxed">
+        <p className="hero-desc esh-body opacity-0 text-white/60 text-sm sm:text-base md:text-lg max-w-2xl mx-auto mb-12 md:mb-14 leading-relaxed">
           Professional live streaming, event production and media services
           built to bring your moments to the world.
         </p>
 
         {/* CTA BUTTONS */}
-        <div className="hero-ctas flex flex-col sm:flex-row gap-4 justify-center">
+        <div className="hero-ctas flex flex-col sm:flex-row gap-4">
           <a
             href="#contact"
-            className="hero-cta opacity-0 bg-gold hover:bg-gold-light text-esh-black px-8 sm:px-10 py-3.5 sm:py-4 text-sm font-bold tracking-[0.2em] transition-all duration-300 hover:shadow-xl hover:shadow-gold/20 hover:-translate-y-0.5"
+            className="hero-cta opacity-0 inline-flex items-center justify-center gap-2.5 bg-gold hover:bg-gold-light text-esh-black px-9 sm:px-11 h-13 py-4 text-xs font-bold tracking-[0.22em] transition-all duration-300 hover:shadow-2xl hover:shadow-gold/25 hover:-translate-y-0.5 group"
           >
-            BOOK A STREAM
+            BOOK ESH
+            <svg
+              className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2.5}
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
           </a>
           <a
             href="#work"
-            className="hero-cta opacity-0 border border-white/30 hover:border-gold text-white hover:text-gold px-8 sm:px-10 py-3.5 sm:py-4 text-sm font-bold tracking-[0.2em] transition-all duration-300 hover:-translate-y-0.5"
+            className="hero-cta opacity-0 inline-flex items-center justify-center gap-2.5 border border-white/25 hover:border-gold text-white hover:text-gold px-9 sm:px-11 py-4 text-xs font-bold tracking-[0.22em] transition-all duration-300 hover:-translate-y-0.5 group"
           >
-            EXPLORE OUR WORK
+            VIEW OUR WORK
+            <svg
+              className="w-3.5 h-3.5 opacity-50 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-1"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
           </a>
         </div>
       </div>
@@ -201,8 +218,13 @@ export default function Hero() {
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-esh-black to-transparent" />
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
-        <div className="w-[1px] h-8 bg-gradient-to-b from-transparent to-gold/50" />
+      <div className="absolute bottom-7 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
+        <span className="text-white/25 text-[9px] tracking-[0.35em] uppercase mb-1">
+          Scroll
+        </span>
+        <div className="w-px h-10 overflow-hidden">
+          <div className="w-full h-full bg-gradient-to-b from-gold/60 to-transparent animate-[eshScroll_2s_ease-in-out_infinite]" />
+        </div>
       </div>
     </section>
   )

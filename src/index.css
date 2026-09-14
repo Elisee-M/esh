@@ -153,6 +153,17 @@ body {
   z-index: 1;
 }
 
+/* ── Scroll Indicator ── */
+@keyframes eshScroll {
+  0% {
+    transform: translateY(-100%);
+  }
+  50%,
+  100% {
+    transform: translateY(100%);
+  }
+}
+
 /* ── Reduced Motion ── */
 @media (prefers-reduced-motion: reduce) {
   *,
